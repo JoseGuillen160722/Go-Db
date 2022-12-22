@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"golang.org/x/mod/sumdb/storage"
+)
 
 func main() {
-	fmt.Println("EDteam")
+	storage.NewPostgresDB()
 }
