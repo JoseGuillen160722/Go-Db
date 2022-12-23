@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"sync"
+	"time"
 
 	_ "github.com/denisenkom/go-mssqldb"
 	_ "github.com/lib/pq"
@@ -67,3 +68,19 @@ func stringToNull(s string) sql.NullString {
 	}
 	return null
 }
+
+func timeToNull(t time.Time) sql.NullTime {
+	null := sql.NullTime{Time: t}
+	if !null.Time.IsZero() {
+		null.Valid = true
+	}
+	return null
+}
+
+// func intToNull (i int) sql.NullInt64{
+// 	null:= sql.NullInt64{}
+// 	if null.Int64 != 0{
+// null.Valid = true
+// 	}
+// 	return null
+// }
